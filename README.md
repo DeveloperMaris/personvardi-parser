@@ -41,7 +41,7 @@ The output of the command will produce an `output/personvardi.json` file contain
 
 ### JSON structure
 
-```json
+```
 {
     "<name>": {
         "name": String,                     # Person name.
