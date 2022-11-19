@@ -9,31 +9,31 @@ If this script is executed too often, your IP address can get blocked by the hos
 
 1. Set up virtual environment
 
-```
+```console
 python -m venv env
 ```
 
 2. Active environment
 
-```
+```console
 source env/bin/activate
 ```
 
 3. Install dependencies
 
-```
+```console
 python -m pip install -r requirements/base.txt
 ```
 
 ## Run
 
-```
+```console
 python -m parse.py
 ```
 
 ## Input
 
-A json file containing all the names is provided as an input. This file contains a specific structure and is generated with [vardadiena-parser](https://github.com/DeveloperMaris/name-day-parser) script.
+A json file containing all the names is provided as an input. This file contains a specific structure and is generated with [vardadiena-parser](https://github.com/DeveloperMaris/vardadiena-parser) script.
 
 ## Output
 
@@ -41,7 +41,7 @@ The output of the command will produce an `output/personvardi.json` file contain
 
 ### JSON structure
 
-```
+```json
 {
     "<name>": {
         "name": String,                     # Person name.
