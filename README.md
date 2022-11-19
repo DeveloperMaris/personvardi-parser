@@ -1,5 +1,9 @@
 # Personvārdi Parser
-A script to parse out information from html page of [Personvārdi DB](https://personvardi.pmlp.gov.lv/index.php)
+
+A Python script to retrieve and parse information from [Personvārdi DB](https://personvardi.pmlp.gov.lv/index.php)
+
+### Attention
+If this script is executed too often, your IP address can get blocked by the host!
 
 ## Setup
 
@@ -27,6 +31,26 @@ python -m pip install -r requirements/base.txt
 python -m parse.py
 ```
 
+## Input
+
+A json file containing all the names is provided as an input. This file contains a specific structure and is generated with [vardadiena-parser](https://github.com/DeveloperMaris/name-day-parser) script.
+
 ## Output
 
-The output of the command will produce a `output/results.json` file containing all the information.
+The output of the command will produce an `output/personvardi.json` file containing all the information.
+
+### JSON structure
+
+```
+{
+    "<name>": {
+        "name": String,                     # Person name.
+        "count": Int,                       # Count of the registered people with that name.
+        "explanation": Optional<String>     # Name explanation, if available.
+    }
+}
+```
+
+## Licence
+
+`personvardi-parser` is released under the MIT License. See [LICENSE](LICENSE) for details.
