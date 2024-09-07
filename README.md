@@ -2,10 +2,11 @@
 
 A Python script to retrieve and parse information from [Personvārdi DB](https://personvardi.pmlp.gov.lv/index.php)
 
-Personvārdi DB provides information about the count of the registered names in the population register (iedzīvotāju reģistrā)
-and the name explanation if available.
+Personvārdi DB provides information about the count of the registered names 
+in the population register (iedzīvotāju reģistrā) and the name explanation if available.
 
-If you are using this resource, you must also include the copyright information, that the source of the data comes from: [Pilsonības un migrācijas lietu pārvalde](https://personvardi.pmlp.gov.lv)
+If you are using this resource, you must also include the copyright information, 
+that the source of the data comes from: [Pilsonības un migrācijas lietu pārvalde](https://personvardi.pmlp.gov.lv)
 
 ### Attention
 If this script is executed too often, your IP address can get blocked by the host!
@@ -32,13 +33,17 @@ python -m pip install -r requirements/base.txt
 
 ## Run
 
+Run command by providing a file path to the name day json file.
+
 ```console
-python -m parse.py
+python parse.py "input/namedays.json"
 ```
 
 ## Input
 
-A json file containing all the names is provided as an input. This file contains a specific structure and is generated with [vardadiena-parser](https://github.com/DeveloperMaris/vardadiena-parser) script.
+A json file containing all the names is provided as an input. 
+This file contains a specific structure 
+and is generated with [vardadiena-parser](https://github.com/DeveloperMaris/vardadiena-parser) script.
 
 ## Output
 
