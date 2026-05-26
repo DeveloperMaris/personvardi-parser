@@ -68,9 +68,8 @@ def process_names(names):
     with concurrent.futures.ThreadPoolExecutor() as executor:
         # Create a list of tasks
         futures = [
-            executor.submit(Personvardi().search_by_name, name=name)
+            executor.submit(Personvardi().search_by_name, name=item["name"])
             for item in names
-            for name in item["names"] + item["additional_names"]
         ]
         
         # Collect results
