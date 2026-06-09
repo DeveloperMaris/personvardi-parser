@@ -9214,13 +9214,6 @@
   {
     "month": 3,
     "day": 25,
-    "name": "(LTG:",
-    "is_additional_calendar_name": true,
-    "removed": null
-  },
-  {
-    "month": 3,
-    "day": 25,
     "name": "Geda",
     "is_additional_calendar_name": true,
     "removed": null
@@ -9312,7 +9305,7 @@
   {
     "month": 3,
     "day": 25,
-    "name": "Muora)",
+    "name": "Muora",
     "is_additional_calendar_name": true,
     "removed": null
   },
@@ -12231,13 +12224,6 @@
   {
     "month": 4,
     "day": 25,
-    "name": "(LTG:",
-    "is_additional_calendar_name": true,
-    "removed": null
-  },
-  {
-    "month": 4,
-    "day": 25,
     "name": "Barbala",
     "is_additional_calendar_name": true,
     "removed": null
@@ -12273,21 +12259,21 @@
   {
     "month": 4,
     "day": 25,
-    "name": "Buorbala)",
+    "name": "Buorbala",
     "is_additional_calendar_name": true,
     "removed": null
   },
   {
     "month": 4,
     "day": 25,
-    "name": "Buorbola)",
+    "name": "Buorbola",
     "is_additional_calendar_name": true,
     "removed": null
   },
   {
     "month": 4,
     "day": 25,
-    "name": "Buorbula)",
+    "name": "Buorbula",
     "is_additional_calendar_name": true,
     "removed": null
   },
@@ -19315,13 +19301,6 @@
   {
     "month": 6,
     "day": 24,
-    "name": "(LTG:",
-    "is_additional_calendar_name": true,
-    "removed": null
-  },
-  {
-    "month": 6,
-    "day": 24,
     "name": "Joņs",
     "is_additional_calendar_name": true,
     "removed": null
@@ -19329,7 +19308,7 @@
   {
     "month": 6,
     "day": 24,
-    "name": "Juoņs)",
+    "name": "Juoņs",
     "is_additional_calendar_name": true,
     "removed": null
   },
@@ -19728,13 +19707,6 @@
   {
     "month": 6,
     "day": 29,
-    "name": "(LTG:",
-    "is_additional_calendar_name": true,
-    "removed": null
-  },
-  {
-    "month": 6,
-    "day": 29,
     "name": "Narajana",
     "is_additional_calendar_name": true,
     "removed": null
@@ -19882,7 +19854,7 @@
   {
     "month": 6,
     "day": 29,
-    "name": "Puovuls)",
+    "name": "Puovuls",
     "is_additional_calendar_name": true,
     "removed": null
   },
