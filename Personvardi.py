@@ -36,52 +36,86 @@ class Personvardi:
         # detailed explanation.
         data = {}
 
-        # Search for the table in the page,
-        # which contains all the information.
-        for row in soup.select('table.table tbody tr'):
+        # The register also contains double names (e.g. "Nimmija Una"),
+        # which the search endpoint returns as substring matches too.
+        # Splitting into words lets us require a whole-word/phrase match
+        # ("Una" inside "Nimmija Una") while still rejecting names that
+        # merely contain the search term as a substring ("Guna", "Ūna").
+        name_words = name.lower().split()
+        word_count = len(name_words)
+
+        rows = soup.select('table.table tbody tr')
+
+        if not rows:
+            # No rows are provided, that means, the word is incorrect.
+            print(f'{name} not found')
+            return data
+
+        found_exact = False
+        compound_count = 0
+
+        for row in rows:
             # Table row contains cells which describe
             # the name, the count of registered names
             # and the date, when it's celebrated.
             cells = row.select('td')
 
             if not cells:
-                # No rows are provided, that means, the word is incorrect.
-                print(f'{name} not found')
-                break
+                continue
 
-            if not cells[0].text.lower() == name.lower():
+            row_name = cells[0].text
+            row_words = row_name.lower().split()
+
+            is_match = any(
+                row_words[i:i + word_count] == name_words
+                for i in range(len(row_words) - word_count + 1)
+            )
+
+            if not is_match:
                 # Found name does not match the one we are searching for,
                 # for example, "Dans" does not match "Bogdans".
                 # We can skip this row.
                 continue
 
-            data['name'] = cells[0].text.capitalize()   # The first cell contains name.
-            data['count'] = int(cells[1].text)          # The second cell contains count of the registered names.
-            data['explanation'] = None                  # Be default, the name explanation is empty.
+            row_count = int(cells[1].text)
+
+            if row_name.lower() != name.lower():
+                # A double name that fully contains the searched name as
+                # one of its parts (e.g. "Nimmija Una" contains "Una").
+                # Its registrations count towards the searched name too,
+                # but it has no detail page of its own to follow.
+                compound_count += row_count
+                continue
+
+            found_exact = True
+            data['name'] = row_name.capitalize()   # The first cell contains name.
+            data['count'] = row_count              # The second cell contains count of the registered names.
+            data['explanation'] = None             # Be default, the name explanation is empty.
 
             # Table row also can contain a link inside one
             # of the cells, therefore we are searching for it.
             link = row.find('a')
 
-            if not link:
-                # Link does not exist, but we already found everything we can,
-                # we can skip other rows now.
-                break
-
-            href = link['href']
-
-            if not href:
-                # We found everything we can, we can skip other rows now.
-                break
+            if not link or not link.get('href'):
+                # Link does not exist, we already have everything we can.
+                continue
 
             # Each href looks like "./index.php?name=14427".
             # We can use the base_url and just append the path to it.
-            path = href[1:]
+            path = link['href'][1:]
             soap = self.__request_data(path)
-            data = self.__process_name_details(soap)
+            data.update(self.__process_name_details(soap))
 
-            # We found everything we need, we can skip other rows now.
-            break
+        if not found_exact and compound_count == 0:
+            print(f'{name} not found')
+            return {}
+
+        if not found_exact:
+            data['name'] = name.capitalize()
+            data['count'] = 0
+            data['explanation'] = None
+
+        data['count'] += compound_count
 
         return data
 
